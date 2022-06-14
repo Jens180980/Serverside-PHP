@@ -1,9 +1,8 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/incl/functions.php";
-
 $strPageTitle = "Strengeleg";
-$strClass = "myHeader";
-echo "<h1 class='$strClass'>$strPageTitle</h1>\n<hr />";
+echo "<h1>$strPageTitle</h1>\n<hr />";
+
 
 $str1 = "Til Bo Nicolajsen\n
 		Vi skriver fordi der endnu er penge på din konto og den er blevet spærret. 
@@ -22,6 +21,7 @@ $str2 = "Hej Tina\n
 //$strTest1 = "abcdef";
 //$strTest2 = "defghi";
 
+/*
 echo showResult(2, strtoupper($str1));
 echo showResult(3, strtolower($str1));
 echo showResult(4, str_replace("email", "bob@someplace.dk", $str1));
@@ -31,6 +31,7 @@ echo showResult(7, str_replace("rig", "fattig", $str2));
 echo showResult(8, str_replace("ikke", "", $str2));
 echo showResult(9, matchLetters($str1, $str2));
 echo showResult(10, shuffleChars($str1));
+*/
 
 /**
  * Funktion der fjerner alle whitespaces og symboler 
@@ -87,5 +88,19 @@ function shuffleChars($str) {
 function showResult($id, $result) {
 	return "<div>\n<h2>Opgave nr. $id</h2>\n 
 				<p><b>Resultat:</b><br>$result</p>\n<hr></div>";
+}
+
+/**
+ * Konverterer floats til dansk format
+ */
+function floatToDk($float) {
+	return number_format($float, 2, ',', '.');
+}
+
+/**
+ * Konverterer integer til float format
+ */
+function floatToDb($float) {
+	return number_format($float, 2, '.', '');
 }
 ?>
