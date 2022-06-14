@@ -1,8 +1,6 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/incl/functions.php";
-$strPageTitle = "Strengeleg";
-echo "<h1>$strPageTitle</h1>\n<hr />";
-
+echo "<h1>Strengeleg</h1>\n<hr />";
 
 $str1 = "Til Bo Nicolajsen\n
 		Vi skriver fordi der endnu er penge på din konto og den er blevet spærret. 
@@ -18,27 +16,25 @@ $str2 = "Hej Tina\n
 		Under navnet \"GeorgGiraf\".\n\n
 		Venlig hilsen Bo";
 
-//$strTest1 = "abcdef";
-//$strTest2 = "defghi";
+$strTest1 = "abcdef";
+$strTest2 = "defghi";
 
-/*
-echo showResult(2, strtoupper($str1));
-echo showResult(3, strtolower($str1));
-echo showResult(4, str_replace("email", "bob@someplace.dk", $str1));
+echo showResult(2, mb_strtoupper($str1));
+echo showResult(3, mb_strtolower($str1));
+echo showResult(4, str_replace("bo@someplace.dk", "bob@someplace.dk", $str1));
 echo showResult(5, countPosition($str1, "e", 7));
 echo showResult(6, countPosition($str1, "E"));
 echo showResult(7, str_replace("rig", "fattig", $str2));
 echo showResult(8, str_replace("ikke", "", $str2));
 echo showResult(9, matchLetters($str1, $str2));
 echo showResult(10, shuffleChars($str1));
-*/
 
 /**
  * Funktion der fjerner alle whitespaces og symboler 
  * og splitter strengen op i et array
  */
 function strToArray($str, $removeSpaces = false) {
-	$str = ($removeSpaces) ? preg_replace('/[^A-Za-z0-9]/', '', $str) : $str;
+	$str = ($removeSpaces) ? preg_replace('/[^A-Za-z0-9ÆØÅæøå]/', '', $str) : $str;
 	return str_split($str);
 }
 
@@ -46,13 +42,13 @@ function strToArray($str, $removeSpaces = false) {
  * Funktion til at tæller en bestemt karakters placering i 
  * den samlede streng.
  */
-function countPosition($str, $char, $num = 1) {
-	$arrChars = strToArray($str); 
+function countPosition($str, $char, $numpos = 1) {
+	$arrChars = strToArray($str);
 	$i = 0;
 	foreach($arrChars as $key => $value) {
 		if($value === $char) {
 			$i++;
-			if($i === $num) {
+			if($i === $numpos) {
 				return $key;
 			}
 		}
@@ -79,20 +75,24 @@ function matchLetters($str1, $str2) {
 function shuffleChars($str) {
 	$arrChars = strToArray($str);
 	shuffle($arrChars);
-	return implode('', $arrChars);
+	$str = implode('', $arrChars);
+	return mb_strtolower($str);
 }
 
 /**
  * Viser resultat med opgave nummer
  */
 function showResult($id, $result) {
-	return "<div>\n<h2>Opgave nr. $id</h2>\n 
+	return "<div>\n<h3>Opgave nr. $id</h3>\n 
 				<p><b>Resultat:</b><br>$result</p>\n<hr></div>";
 }
 
 /**
  * Konverterer floats til dansk format
  */
+$float = 3245.99;
+echo floatToDk($float);
+
 function floatToDk($float) {
 	return number_format($float, 2, ',', '.');
 }
@@ -103,4 +103,13 @@ function floatToDk($float) {
 function floatToDb($float) {
 	return number_format($float, 2, '.', '');
 }
+
+// Eksempel på defination af funktion
+function fName($param1, $param2 = 10) {
+	return $param1 + $param2;
+}
+
+// Eksempel på et funktionskald
+ fName(10,2);
+
 ?>
