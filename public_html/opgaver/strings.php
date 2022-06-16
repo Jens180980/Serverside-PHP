@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/incl/functions.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/incl/init.php";
 echo "<h1>Strengeleg</h1>\n<hr />";
 
 $str1 = "Til Bo Nicolajsen\n
@@ -16,13 +16,15 @@ $str2 = "Hej Tina\n
 		Under navnet \"GeorgGiraf\".\n\n
 		Venlig hilsen Bo";
 
+$strTestCount = "Hej med dig. Vi vil gerne dele vores mel med dig";
 $strTest1 = "abcdef";
 $strTest2 = "defghi";
 
 echo showResult(2, mb_strtoupper($str1));
 echo showResult(3, mb_strtolower($str1));
 echo showResult(4, str_replace("bo@someplace.dk", "bob@someplace.dk", $str1));
-echo showResult(5, countPosition($str1, "e", 7));
+echo showResult(5, countPosition($strTest1, "e", 9));
+//echo showResult(5.1, strrpos($strTestCount, 'e'));
 echo showResult(6, countPosition($str1, "E"));
 echo showResult(7, str_replace("rig", "fattig", $str2));
 echo showResult(8, str_replace("ikke", "", $str2));

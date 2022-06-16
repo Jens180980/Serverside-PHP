@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/incl/functions.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/incl/init.php";
 echo "<h1>Eksempel på string replace</h1>\n<hr />";
 
 $str1 = "Til Bo Nicolajsen\n
