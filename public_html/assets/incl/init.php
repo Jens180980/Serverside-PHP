@@ -8,5 +8,5 @@
 define("DOCROOT", $_SERVER["DOCUMENT_ROOT"]); 
 // Definerer konstant med sti til core mappe
 define("COREROOT", substr(DOCROOT, 0, strrpos(DOCROOT,"/")) . "/core/");
-
-require_once COREROOT . "/functions.php";
+// Henter class loader
+include_once COREROOT . "/classes/autoload.php";
