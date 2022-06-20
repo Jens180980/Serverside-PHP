@@ -40,9 +40,9 @@ class Db {
 	protected $sql;
     protected $sth;
 	
-	public const RESULT_MULTIPLE = 1;
-	public const RESULT_SINGLE = 2;
-	public const RESULT_VALUE = 3;
+	public const RESULT_MULTIPLE = 1; // Konstant til resultat med mange records
+	public const RESULT_SINGLE = 2; // Konstant til resultat med en enkelt række
+	public const RESULT_VALUE = 3; // Konstant til resultat med en enkelt værdi
 
 	/**
 	 * DB Constructor
@@ -86,7 +86,8 @@ class Db {
 	 * DB Query
 	 * Metode der kan håndtere forespørgsler (queries)
 	 * @param $sql - SQL statement
-	 * @param null $vars - Array med eventuelle varibler som skal bindes til forespørgslen 
+	 * @param null $vars - Array med eventuelle variabler som skal bindes til forespørgslen 
+	 * @param int $result_type - Type af resultat. Bruger en af klassens konstanter. Default er multiple.
 	 * @param int $flag - Indstilling til form på array index. Standard er associeret value (feltnavne)
 	 * @return mixed
 	 */
