@@ -1,19 +1,32 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/incl/init.php";
-$strPageTitle = "Velkommen";
-require_once DOCROOT . "/assets/incl/header.php";
+Helpers::Header("Velkommen");
 
-// Indhold
+// Database Connection
+$dns = "mysql:host=localhost;dbname=songbook;";
+$username = "root";
+$password = "password";
+$db = new PDO($dns, $username, $password);
 
-$user = new User();
-$user->firstname = "Tim";
-$user->lastname = "Sørensen";
-$user->address = "Tølbøllevej 34";
-$user->zipcode = 9867;
-$user->city = "Tølbølle";
-$user->country = "Danmark";
+// Hent liste
+/*
+$sql = "SELECT * FROM song ORDER BY rand() LIMIT 4";
+$stmt = $db->query($sql);
+$row = $stmt->fetchAll();
+foreach($row as $value) {
+	echo "<p>" . $value['title'] . "</p>";
+}
+*/
 
-echo $user->getUserInfo();
+$id =isset($_GET['id']) && $_GET['id'] ? $_GET['id'] : 1;
+$sql = "SELECT * FROM song WHERE id = :id";
+$stmt = $db->prepare($sql);
+$stmt->bindParam(":id", $id);
+$stmt->execute();
+$row = $stmt->fetch();
+var_dump($row);
 
+
+//Helpers::showMe($_SERVER);
 
 require_once DOCROOT . "/assets/incl/footer.php";

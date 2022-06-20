@@ -8,6 +8,28 @@ class User {
 	public $country;
 	public $email;
 
+	public function __construct()
+	{
+		$this->firstname = "-";
+		$this->lastname = "-";
+		$this->address = "Vejnavn Nr";
+		$this->zipcode = 0;
+		$this->city = "--";
+		$this->country = "DK";
+		$this->email = "-@-.-";
+	}
+
+	public function setData($firstname, $lastname, $address, $zipcode, $city, $country, $email)
+	{
+		$this->firstname = $firstname;
+		$this->lastname = $lastname;
+		$this->address = $address;
+		$this->zipcode = $zipcode;
+		$this->city = $city;
+		$this->country = $country;
+		$this->email = $email;
+	}
+
 	public function getFullName() {
 		return "<p><b>$this->firstname $this->lastname</b></p>";
 	}
@@ -16,6 +38,7 @@ class User {
 		return "<p>$this->address<br />
 				$this->zipcode $this->city<br />
 				$this->country</p>";
+
 	}
 
 	public function getUserInfo() {
