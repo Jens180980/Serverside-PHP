@@ -10,3 +10,5 @@ define("DOCROOT", $_SERVER["DOCUMENT_ROOT"]);
 define("COREROOT", substr(DOCROOT, 0, strrpos(DOCROOT,"/")) . "/core/");
 // Henter class loader
 include_once COREROOT . "/classes/autoload.php";
+
+$db = new dbconf;
