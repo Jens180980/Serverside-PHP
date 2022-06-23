@@ -15,7 +15,7 @@ Route::add('/api/song/([0-9]*)', function($id) {
 	echo Helpers::jsonParser($response);
 });
 
-// Route til opret/opdatere
+// Route til opret/opdatere - dækker over put requests
 Route::add('/api/song/', function() {
 	$object = new Song;
 	$object->id = isset($_POST['id']) && !empty($_POST["id"]) ? $_POST["id"]: null;
