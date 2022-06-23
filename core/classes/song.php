@@ -15,12 +15,19 @@ class Song
 		$this->db = $db;
 	}
 
+	/**
+	 * Metode til at hente lister med
+	 */
 	public function list()
 	{
 		$sql = "SELECT id, title FROM song";
 		return $this->db->query($sql);
 	}
 
+	/**
+	 * Metode til at hente detaljer med
+	 * @param id 
+	 */
 	public function details($id)
 	{
 		$params = array(
@@ -66,6 +73,10 @@ class Song
 		}
 	}
 
+	/**
+	 * Metode til at slette en record med
+	 * @param id 
+	 */
 	public function delete($id)
 	{
 		$params = array(
