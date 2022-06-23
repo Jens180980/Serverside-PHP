@@ -54,7 +54,7 @@ class Song
 			'artist_id' => array($this->artist_id, PDO::PARAM_INT)
 		);
 
-		if ($this->id) {
+		if($this->id) {
 			// Update
 			$params["id"] = array($this->id, PDO::PARAM_INT);
 			$sql = "UPDATE song 
