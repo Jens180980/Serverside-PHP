@@ -1,6 +1,7 @@
 <?php
 class Route
 {
+
     private static $routes = array();
     private static $pathNotFound = null;
     private static $methodNotAllowed = null;
