@@ -6,13 +6,9 @@ $params = array(
 	"id" => array(4, PDO::PARAM_INT)
 );
 
-$sql = "SELECT s.title, a.name 
-		FROM song s 
-		JOIN artist a 
-		ON s.artist_id = a.id 
-		WHERE s.id = :id";
+$sql = "SELECT id, title FROM song";
 
-$result = $db->query($sql, $params, Db::RESULT_SINGLE);
+$result = $db->query($sql, $params);
 var_dump($result);
 
 Helpers::Footer();
