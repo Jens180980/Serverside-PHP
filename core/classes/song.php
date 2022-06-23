@@ -35,7 +35,11 @@ class Song
 		return $this->db->query($sql, $params, Db::RESULT_SINGLE);
 	}
 
-	public function create()
+	/**
+	 * Metode til at oprette/opdatere
+	 * Laver en update hvis id er true - ellers oprettes en ny
+	 */
+	public function edit()
 	{
 		$params = array(
 			'title' => array($this->title, PDO::PARAM_STR),
@@ -44,6 +48,7 @@ class Song
 		);
 
 		if ($this->id) {
+			// Update
 			$params["id"] = array($this->id, PDO::PARAM_INT);
 			$sql = "UPDATE song 
 					SET title = :title,
@@ -52,6 +57,7 @@ class Song
 					WHERE id = :id";
 			return $this->db->query($sql, $params);
 		} else {
+			// Create
 			$sql = "INSERT INTO song(title, content, artist_id)
 					VALUES(:title, :content, :artist_id)";
 			if ($this->db->query($sql, $params)) {
