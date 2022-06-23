@@ -9,6 +9,9 @@ class Song
 	public $artist_id;
 	public $created_at;
 
+	/**
+	 * Constructor
+	 */
 	public function __construct()
 	{
 		global $db;
