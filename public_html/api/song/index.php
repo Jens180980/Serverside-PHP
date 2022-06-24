@@ -1,20 +1,21 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/incl/init.php";
 
-// Route til liste 
+// GET Route til liste 
 Route::add('/api/song/', function() {
 	$object = new Song;
 	$response = $object->list();
 	echo Helpers::jsonParser($response);
 });
 
-// Route til detaljer
+// GET Route til detaljer
 Route::add('/api/song/([0-9]*)', function($id) {
 	$object = new Song;
 	$response = $object->details($id);
 	echo Helpers::jsonParser($response);
 });
 
+// POST Route til create/update
 Route::add('/api/song/', function() {
 	$object = new Song;
 	$object->id = isset($_POST['id']) && !empty($_POST['id']) ? (int)$_POST['id'] : null;
@@ -24,7 +25,7 @@ Route::add('/api/song/', function() {
 	echo $object->save();
 }, 'post');
 
-// Route til at slette
+// DELETE Route til at slette
 Route::add('/api/song/([0-9]*)', function($id) {
 	$object = new Song;
 	$response = $object->delete($id);
