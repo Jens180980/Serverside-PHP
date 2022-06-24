@@ -15,14 +15,13 @@ Route::add('/api/song/([0-9]*)', function($id) {
 	echo Helpers::jsonParser($response);
 });
 
-// Route til opret/opdatere - dækker over put requests
 Route::add('/api/song/', function() {
 	$object = new Song;
-	$object->id = isset($_POST['id']) && !empty($_POST["id"]) ? $_POST["id"]: null;
-	$object->title = (string)$_POST['title'];
-	$object->content = (string)$_POST['content'];
-	$object->artist_id = (int)$_POST['artist_id'];
-	echo $object->edit();
+	$object->id = isset($_POST['id']) && !empty($_POST['id']) ? (int)$_POST['id'] : null;
+	$object->title = isset($_POST['title']) && !empty($_POST['title']) ? (string)$_POST['title'] : null;
+	$object->content = isset($_POST['content']) && !empty($_POST['content']) ? (string)$_POST['content'] : null;
+	$object->artist_id = isset($_POST['artist_id']) && !empty($_POST['artist_id']) ? (int)$_POST['artist_id'] : null;
+	echo $object->save();
 }, 'post');
 
 // Route til at slette
