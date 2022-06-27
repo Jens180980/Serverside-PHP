@@ -6,7 +6,7 @@ $params = array(
 	"id" => array(4, PDO::PARAM_INT)
 );
 
-$sql = "SELECT id, title FROM song";
+$sql = "SELECT id, title FROM song WHERE id = :id";
 
 $result = $db->query($sql, $params);
 var_dump($result);

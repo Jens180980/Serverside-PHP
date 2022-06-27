@@ -14,15 +14,16 @@ Route::add('/admin/song/', function() {
 	$data = $object->list();
 	foreach($data as $key => $value) {
 		$data[$key]['options'] = "
-			<a href=\"/admin/song/edit/".$value["id"]."\" title=\"Rediger\" class=\"edit\">&check;</a>\n
-			<a href=\"/admin/song/delete/".$value["id"]."\" title=\"Slet\" class=\"delete\">&cross;</a>\n";
+			<a href=\"/admin/song/".$value["id"]."\" title=\"Rediger\" class=\"edit\">&check;</a>\n
+			<a href=\"#\">&cross;</a>";
 	}
 	$presenter = new ListPresenter($fields, $data);
 	echo $presenter->create();
 });
 
-Route::add('/admin/song/edit/([0-9]*)', function($id) {
+Route::add('/admin/song/([0-9]*)', function($id) {
 	echo $id;
 });
 
 Route::run('/');
+

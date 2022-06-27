@@ -8,7 +8,7 @@ class dbconf extends db {
     function __construct() {
         $this->dbhost = "localhost";
 	    $this->dbuser = "root";
-        $this->dbpassword = "password";
+        $this->dbpassword = "Laslanzas2022";
         $this->dbname = "songbook";
         $db = parent::connect();
     }

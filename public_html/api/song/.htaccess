@@ -12,4 +12,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
  
 # Push every request to index.php
-RewriteRule ^(.*)$ /api/song/index.php [QSA]
+
+# Heinzes rewrite rule
+# RewriteRule ^(.*)$ /api/song/index.php [QSA]
+
+#Internettets rewrite rule
+RewriteRule . /index.php [L]

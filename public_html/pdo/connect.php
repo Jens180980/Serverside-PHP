@@ -5,7 +5,7 @@ Helpers::Header("Velkommen");
 // Database Connection
 $dns = "mysql:host=localhost;dbname=songbook;";
 $username = "root";
-$password = "password";
+$password = "Laslanzas2022";
 $db = new PDO($dns, $username, $password);
 
 Helpers::Footer();
